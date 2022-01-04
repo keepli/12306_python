@@ -91,33 +91,27 @@ def showTicket(html):
         for pos in name:
             if data[pos] == "":
                 data[pos] = "-"
-        tickets = []
-        cont = []
-        cont.append(data)
         list.append(data)
-        for x in cont:
-            tmp = []
-            for y in name:
-                if y == "from_station_name":
-                    s = color.green(chezhan_names[data["from_station_name"]])
-                    tmp.append(s)
-                elif y == "to_station_name":
-                    s = color.yeah(chezhan_names[data["to_station_name"]])
-                    tmp.append(s)
-                elif y == "start_time":
-                    s = color.green(data["start_time"])
-                    tmp.append(s)
-                elif y == "arrive_time":
-                    s = color.yeah(data["arrive_time"])
-                    tmp.append(s)
-                elif y == "station_train_code":
-                    s = color.yellow(data["station_train_code"])
-                    tmp.append(s)
-                else:
-                    tmp.append(data[y])
-            tickets.append(tmp)
-        for ticket in tickets:
-            table.add_row(ticket)
+        tmp = []
+        for y in name:
+            if y == "from_station_name":
+                s = color.green(chezhan_names[data["from_station_name"]])
+                tmp.append(s)
+            elif y == "to_station_name":
+                s = color.yeah(chezhan_names[data["to_station_name"]])
+                tmp.append(s)
+            elif y == "start_time":
+                s = color.green(data["start_time"])
+                tmp.append(s)
+            elif y == "arrive_time":
+                s = color.yeah(data["arrive_time"])
+                tmp.append(s)
+            elif y == "station_train_code":
+                s = color.yellow(data["station_train_code"])
+                tmp.append(s)
+            else:
+                tmp.append(data[y])
+        table.add_row(tmp)
     print(table)
 def main():
     date     = input("请输入时间：\n")
@@ -138,4 +132,5 @@ def main():
     showTicket(r.text)
     #print(r.text)
     print(list)
+    print(len(list))
 main()
